@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: gutgraph
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: COMMANDCODE_API_KEY
+        sync: false
+      - key: COMMANDCODE_BASE_URL
+        sync: false
+      - key: COMMANDCODE_MODEL
+        sync: false
+      - key: FOODOSCOPE_API_KEY
+        sync: false
+      - key: FOODOSCOPE_BASE_URL
+        sync: false
