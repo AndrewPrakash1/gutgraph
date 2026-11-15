@@ -4,5 +4,4 @@ __pycache__/
 .env
 .foodoscope_cache/
 backend/gutgraph.db
-backend/tests/
 .DS_Store

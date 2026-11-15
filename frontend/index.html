@@ -96,6 +96,9 @@ body.notebook #paper { opacity: 1; }
 .nav .tools { display: flex; gap: 0.6rem; align-items: center; }
 .pill { font: 700 0.75rem/1 var(--f-body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); background: transparent; border: 2px solid var(--fg); padding: 0.6rem 0.8rem; cursor: pointer; border-radius: var(--blob); }
 .pill:hover, .pill[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+/* The parliament is the flagship surface, so its nav entry is the one filled pill. */
+.pill.primary { background: var(--yolk); color: var(--plum); border-color: var(--plum); }
+.pill.primary:hover { background: var(--plum); color: var(--yolk); }
 #bar { position: fixed; z-index: 40; right: 0; top: 0; width: 5px; height: 100%; pointer-events: none; }
 #bar i { display: block; width: 100%; height: 0; background: var(--pink); }
 #grain { position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.08; background-size: 160px 160px; }
@@ -1467,6 +1470,8 @@ body:not([data-ground="paper"]):not([data-ground="yolk"]) .btn.solid { border-co
   <div class="tools">
     <button class="pill" id="sound" type="button" aria-pressed="false">Sound off</button>
     <button class="pill" id="cart-open" type="button">Stash (<span id="cart-n">0</span>)</button>
+    <button class="pill primary" id="parl-open" type="button" onclick="openAgentRoom()"
+            aria-label="Open the Gut Parliament" title="Open the Gut Parliament (live agent votes)">🏛 Parliament</button>
     <button class="pill nav-menu-btn" id="chat-open" type="button" aria-label="Open Agents Chat" title="Open Agents Chat">
       <span class="menu-icon"><i></i><i></i><i></i></span>
       <span>Agents</span>
@@ -4523,6 +4528,9 @@ body:not([data-ground="paper"]):not([data-ground="yolk"]) .btn.solid { border-co
     #chat-open > span:last-child { display: none; }
     #dash-open { font-size: 0; }
     #dash-open::before { content: '📊'; font-size: 0.72rem; }
+    /* Same treatment for the parliament entry: the glyph stays, the word goes. */
+    #parl-open { font-size: 0; }
+    #parl-open::before { content: '🏛'; font-size: 0.72rem; }
     #cart-open { font-size: 0; }
     #cart-open::before { content: '🛒'; font-size: 0.72rem; }
     #cart-open #cart-n { font-size: 0.62rem; }
