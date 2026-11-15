@@ -368,7 +368,7 @@ def send_email(receiver: str, otp: str) -> None:
         f"Welcome to GUTGRAPH!\n\nYour email verification OTP is: {otp}\n\n"
         f"This OTP expires in 10 minutes. If you did not request it, ignore this email."
     )
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=10) as server:
         server.login(EMAIL_USER, EMAIL_PASS)
         server.send_message(message)
 

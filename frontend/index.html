@@ -2831,9 +2831,9 @@ body:not([data-ground="paper"]):not([data-ground="yolk"]) .btn.solid { border-co
       showAuthView('auth-view-otp');
       startOtpTimer();
       if (res.demo_otp) {
-        // Dev mode only (EMAIL_USER/EMAIL_PASS not configured): never auto-fill,
-        // never show the code in the UI — it is printed to the server console.
-        toast('Dev mode: no email configured — code is in the server console.');
+        // Dev/demo mode (email not actually sent): show the code so the user can
+        // type it — but never auto-fill the field.
+        toast('Demo mode: your code is ' + res.demo_otp + ' (email not configured).');
       } else {
         toast('Verification code sent to ' + email + ' — check your inbox.');
       }
