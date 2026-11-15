@@ -173,3 +173,9 @@ used — and labelled — when FlavorDB is unreachable).
 
 Knobs: `LLM_TOOLS=off` disables the tool path (agents then answer from the truth layer and
 persona text only); `LLM_TOOL_HOPS` caps the rounds per turn (default 2).
+
+## API audit (what talks to what)
+
+Every external service the project talks to, where in the code the call is made, which feature
+depends on it and whether it is actually used — with the live results recorded and the commands
+to re-verify: [`docs/API_AUDIT.pdf`](docs/API_AUDIT.pdf) (4 pages).
