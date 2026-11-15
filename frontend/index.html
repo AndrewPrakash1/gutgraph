@@ -1753,7 +1753,7 @@ body:not([data-ground="paper"]):not([data-ground="yolk"]) .btn.solid { border-co
       if (st) st.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 650);
   });
-  var base = (location.protocol.indexOf('http') === 0 && location.port !== '') ? '' : 'http://localhost:8000';
+  var base = (location.protocol.indexOf('http') === 0) ? '' : 'http://localhost:8000';
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var msg = input.value.trim();
@@ -2583,7 +2583,7 @@ body:not([data-ground="paper"]):not([data-ground="yolk"]) .btn.solid { border-co
   }
 
   /* ---------------- Backend & State Management ---------------- */
-  var API_BASE = (window.location.protocol.startsWith('http') && window.location.port !== '')
+  var API_BASE = (window.location.protocol.startsWith('http'))
     ? ''
     : 'http://localhost:8000';
   var authToken = localStorage.getItem('gutgraph_token') || null;
@@ -4105,7 +4105,7 @@ body:not([data-ground="paper"]):not([data-ground="yolk"]) .btn.solid { border-co
 
 <script>
 (function () {
-  var BASE = (location.protocol.indexOf('http') === 0 && location.port !== '') ? '' : 'http://localhost:8000';
+  var BASE = (location.protocol.indexOf('http') === 0) ? '' : 'http://localhost:8000';
   function $id(x) { return document.getElementById(x); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function ggToast(m) { var t = $id('toast'); if (!t) return; t.textContent = m; t.classList.add('show'); clearTimeout(ggToast._t); ggToast._t = setTimeout(function () { t.classList.remove('show'); }, 2600); }
@@ -4488,7 +4488,7 @@ body:not([data-ground="paper"]):not([data-ground="yolk"]) .btn.solid { border-co
     busy = true;
     var h = { 'Content-Type': 'application/json' }, tk = ggToken();
     if (tk) h['Authorization'] = 'Bearer ' + tk;
-    var base = (location.protocol.indexOf('http') === 0 && location.port !== '') ? '' : 'http://localhost:8000';
+    var base = (location.protocol.indexOf('http') === 0) ? '' : 'http://localhost:8000';
     fetch(base + '/api/story-acts', {
       method: 'POST',
       headers: h,
@@ -4510,6 +4510,8 @@ body:not([data-ground="paper"]):not([data-ground="yolk"]) .btn.solid { border-co
 </script>
 <!-- ================== MOBILE / SMALL-SCREEN RESPONSIVENESS ================== -->
 <style>
+  /* kill the 8px horizontal jiggle from the full-bleed marquee / rotated banners */
+  body { overflow-x: hidden; }
   @media (max-width: 640px) {
     /* --- top nav: collapse to icons so it fits even 320px phones --- */
     .nav { gap: 0.35rem; padding-left: 0.6rem; padding-right: 0.6rem; flex-wrap: nowrap; }
